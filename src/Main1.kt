@@ -9,7 +9,7 @@ fun main() {
             println("tri")
         }else if(num%5 == 0){
             println("qui")
-        }else{
+        }else {
             println(num)
 
         }
