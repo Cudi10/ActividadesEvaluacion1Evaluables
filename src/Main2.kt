@@ -1,9 +1,15 @@
 fun main(){
 
-    println("Introduzca una palabra:")
+    print("Introduce la primera palabra: ")
+    val palabra1 = readLine() ?: ""
+    print("Introduce la segunda palabra: ")
+    val palabra2 = readLine() ?: ""
 
-    println("Introduzca otra palabra:")
-
+    if (Anagramas(palabra1, palabra2)) {
+        println("Las palabras '$palabra1' y '$palabra2' SON anagramas.")
+    } else {
+        println("Las palabras '$palabra1' y '$palabra2' NO son anagramas.")
+    }
 }
 
 fun Anagramas(palabra1: String, palabra2: String): Boolean {
