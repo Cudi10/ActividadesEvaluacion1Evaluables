@@ -33,5 +33,20 @@ fun main(){
 
 fun Matriz(matriz: Array<Array<String>>): String{
 
+    var countX = 0
+    var countO = 0
+    var countVacios = 0
+
+    for (i in 0..2) {
+        for (j in 0..2) {
+            when (matriz[i][j]) {
+                "X" -> countX++
+                "O" -> countO++
+                "" -> countVacios++
+                else -> return "Nulo"
+            }
+        }
+    }
+
     return TODO("Provide the return value")
 }
