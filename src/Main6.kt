@@ -1,17 +1,54 @@
+import java.util.*
+
 fun main(){
+    val scanner = Scanner(System.`in`)
+    val agenda = Agenda()
+    var opcion: Int
+    do {
+        println("1.Añadir un contacto a la agenda")
+        println("2.Listar todos los contactos de la agenda")
+        println("3.Buscar un contacto")
+        println("4.Existe contacto")
+        println("5.Eliminar contacto")
+        println("6.Contactos disponibles")
+        println("7.Agenda llena")
+        println("8.Salir")
+        println("Escribe una de las opciones:")
 
-    println("1.Añadir un contacto a la agenda\n")
-    println("2.Listar todos los contactos de la agenda\n")
-    println("3.Buscar un contacto\n")
-    println("4.Existe contacto\n")
-    println("5.Eliminar contacto\n")
-    println("6.Contactos disponibles\n")
-    println("7.Agenda llena\n")
-    println("8.Salir\n")
-    println("Escribe una de las opciones:")
+        opcion = scanner.nextInt()
+        scanner.nextLine()
 
+        when (opcion) {
+            1 -> {
+                print("Escribe un nombre:")
+                val nombre = scanner.nextLine()
+                print("Escribe un teléfono:")
+                val telefono = scanner.nextLine()
+                val contacto = Contacto(nombre, telefono)
+                agenda.ayadirContacto(contacto)
+            }
 
+            2 -> agenda.listarContactos()
+            3 -> {
+                print("Escribe un nombre:")
+                val nombre = scanner.nextLine()
+                agenda.buscarContacto(nombre)
+            }
 
+            4 -> {
+                print("Escribe un nombre:")
+                val nombre = scanner.nextLine()
+                agenda.ExistencciaContacto(nombre)
+            }
+            5 -> {
+                print("Escribe un nombre:")
+                val nombre = scanner.nextLine()
+                agenda.EliminarContacto(nombre)
+            }
+            6 -> agenda.HuecoLibreAgenda()
+            7 -> agenda.AgendaLlena()
+        }
+    } while (opcion != 8)
 
 }
 
@@ -24,10 +61,10 @@ class Agenda(private val capacidadMaxima: Int = 3) {
         if (contactos.size >= capacidadMaxima) {
             println("La agenda está llena, no se pueden meter mas contactos.")
         } else if (contactos.any { it.nombre == contacto.nombre }) {
-            println("El contacto con ese nombre ${contacto.nombre} ya existe.")
+            println("El contacto con ese nombre ya existe.")
         } else {
             contactos.add(contacto)
-            println("Se ha añadido el contacto: ${contacto.nombre}")
+            println("Se ha añadido el contacto")
         }
     }
 
