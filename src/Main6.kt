@@ -1,18 +1,21 @@
 fun main(){
 
- println("1.Añadir un contacto a la agenda\n")
- println("2.Listar todos los contactos de la agenda\n")
- println("3.Buscar un contacto\n")
- println("4.Existe contacto\n")
- println("5.Eliminar contacto\n")
- println("6.Contactos disponibles\n")
- println("7.Agenda llena\n")
- println("8.Salir\n")
- println("Escribe una de las opciones:")
+    println("1.Añadir un contacto a la agenda\n")
+    println("2.Listar todos los contactos de la agenda\n")
+    println("3.Buscar un contacto\n")
+    println("4.Existe contacto\n")
+    println("5.Eliminar contacto\n")
+    println("6.Contactos disponibles\n")
+    println("7.Agenda llena\n")
+    println("8.Salir\n")
+    println("Escribe una de las opciones:")
+
+
+
 
 }
 
-data class Contacto(var nombre: String, var telefono: String)
+data class Contacto(val nombre: String, val telefono: String)
 
 class Agenda(private val capacidadMaxima: Int = 3) {
     private val contactos = mutableListOf<Contacto>()
@@ -70,15 +73,24 @@ class Agenda(private val capacidadMaxima: Int = 3) {
     }
 
     fun HuecoLibreAgenda(){
-
+        val huecos = capacidadMaxima - contactos.size
+        if (huecos > 0) {
+            println("Hay $huecos contacto/s libre/s.")
+        } else {
+            println("Hay $huecos contacto/s libre/s.")
+        }
     }
 
-    fun AgendaLlena(){
-
+    fun AgendaLlena(): Boolean {
+        val llena = contactos.size >= capacidadMaxima
+        if (llena) {
+            println("La agenda está llena.")
+        } else {
+            println("Aun se pueden meter contactos.")
+        }
+        return llena
     }
 
-    fun Salir(){
 
-    }
 }
 
