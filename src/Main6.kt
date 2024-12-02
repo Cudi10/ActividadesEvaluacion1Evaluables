@@ -33,19 +33,39 @@ class Agenda(private val capacidadMaxima: Int = 3) {
             println("No hay contactos que mostrar.")
         } else {
             println("Lista de contactos:")
-            contactos.forEach { println("Nombre: ${it.nombre}, Teléfono: ${it.telefono}") }
+            contactos.forEach { println("Nombre = ${it.nombre}, Teléfono = ${it.telefono}") }
         }
     }
 
-    fun BuscarContacto(){
-
+    fun buscarContacto(nombre: String) {
+        val contacto = contactos.find { it.nombre == nombre }
+        if (contacto != null) {
+            println("Su teléfono es ${contacto.telefono}")
+        } else {
+            println("No se ha encontrado al contacto.")
+        }
     }
 
-    fun ExistencciaContacto(){
+    fun ExistencciaContacto(nombre: String): Boolean {
+        val existe = contactos.any { it.nombre == nombre }
 
+        if (existe) {
+            println("El contacto '$nombre' existe.")
+        } else {
+            println("El contacto '$nombre' no existe.")
+        }
+
+        return existe
     }
 
-    fun EliminarContacto(){
+    fun EliminarContacto(nombre: String) {
+        val contacto = contactos.find { it.nombre == nombre }
+        if (contacto != null) {
+            contactos.remove(contacto)
+            println("Se ha eliminado el contacto eliminado.")
+        } else {
+            println("No se ha eliminado el contacto.")
+        }
 
     }
 
